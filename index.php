@@ -1,5 +1,9 @@
 <?php
     require_once("includes/functions.php");
+
+    $lists = getAllLists();
+    $tasks = getAllTasks();
+
 ?>
 
 <!DOCTYPE html>
@@ -12,19 +16,18 @@
 </head>
 <body>
     <ul>
-        <?php
-            $lists = getAllLists();
-
-            foreach($lists as $key => $list) {
-
-        ?>
+        <?php foreach ($lists as $list) { ?>
         <li>
             <?php echo $list["name"] ?>
+            <ul>
+            <?php foreach ($tasks as $task) { ?>
+                <li>
+                    <?php echo $task["name"] ?>
+                </li>
+            <?php } ?>
+            </ul>
         </li>
-        <?php
-            }
-        ?>
-
+        <?php } ?>
     </ul>
 </body>
 </html>

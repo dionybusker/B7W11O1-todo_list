@@ -10,3 +10,14 @@
 
         return $query->fetchAll();
     }
+
+    function getAllTasks() {
+        $conn = dbcon();
+
+        $query = $conn->prepare("SELECT lists.*, tasks.*
+                                 FROM tasks, lists
+                                 WHERE lists.id = tasks.list_id");
+        $query->execute();
+
+        return $query->fetchAll();
+    }
