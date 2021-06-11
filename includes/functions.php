@@ -36,3 +36,13 @@
         $query->bindParam(":listName", $listName);
         $query->execute();
     }
+
+    function createTask($taskName, $description, $duration) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("INSERT INTO tasks (name, description, duration) VALUES (:taskName, :description, :duration)");
+        $query->bindParam(":taskName", $taskName);
+        $query->bindParam(":description", $description);
+        $query->bindParam(":duration", $duration);
+        $query->execute();
+    }
