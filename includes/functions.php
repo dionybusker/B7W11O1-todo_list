@@ -14,9 +14,7 @@
     function getAllTasks() {
         $conn = dbcon();
 
-        $query = $conn->prepare("SELECT lists.*, tasks.*
-                                 FROM tasks, lists
-                                 WHERE lists.id = tasks.list_id");
+        $query = $conn->prepare("SELECT * FROM tasks");
         $query->execute();
 
         return $query->fetchAll();
