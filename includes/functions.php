@@ -19,3 +19,14 @@
 
         return $query->fetchAll();
     }
+
+    function getAllStatuses() {
+        $conn = dbcon();
+
+        $query = $conn->prepare("SELECT * FROM statuses");
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+    

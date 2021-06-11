@@ -3,6 +3,7 @@
 
     $lists = getAllLists();
     $tasks = getAllTasks();
+    $statuses = getAllStatuses();
 
 ?>
 
@@ -20,7 +21,7 @@
         <div class="row col-12">
             <?php foreach ($lists as $list) { ?>
 
-            <div class="card col-3 mx-1">
+            <div class="card col-3 m-1">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $list["name"] ?></h4>
                     <p class="card-text">
@@ -31,9 +32,25 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <p class="card-text">
-                                                <span class="font-weight-bold">Taak: </span> <?php echo $task["name"]; ?> <br>
-                                                <span class="font-weight-bold">Beschrijving: </span> <?php echo $task["description"] ?> <br>
-                                                <span class="font-weight-bold">Status: </span> <?php echo $task["status_id"] ?> <br>
+                                                <span class="font-weight-bold">Taak: </span>
+                                                <?php echo $task["name"]; ?> <br>
+
+                                                <span class="font-weight-bold">Beschrijving: </span>
+                                                <?php echo $task["description"] ?> <br>
+
+                                                <span class="font-weight-bold">Tijdsduur: </span>
+                                                <?php echo $task["duration"] ?> minuten <br>
+
+                                                <span class="font-weight-bold">Status: </span>
+                                                <?php foreach ($statuses as $status) {
+                                                    if ($task["status_id"] == $status["id"]) {
+                                                        echo $status["name"];
+                                                    }
+                                                } ?>
+                                                
+                                                
+                                                
+                                                
                                             </p>
                                         </div>
                                     </div>
