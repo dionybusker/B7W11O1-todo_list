@@ -17,7 +17,7 @@
         <title>Document</title>
     </head>
     <body>
-
+        <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
         <div class="row col-12">
             <?php foreach ($lists as $list) { ?>
 
@@ -47,9 +47,6 @@
                                                         echo $status["name"];
                                                     }
                                                 } ?>
-                                                
-                                                
-                                                
                                                 
                                             </p>
                                         </div>

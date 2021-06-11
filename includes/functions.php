@@ -29,4 +29,10 @@
         return $query->fetchAll();
     }
 
-    
+    function createList($listName) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("INSERT INTO lists (name) VALUES (:listName)");
+        $query->bindParam(":listName", $listName);
+        $query->execute();
+    }
