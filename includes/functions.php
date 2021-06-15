@@ -40,6 +40,17 @@
         return $query->fetch();
     }
 
+    function getTaskById($id) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("SELECT * FROM tasks WHERE id = :id");
+        $query->bindParam(":id", $id);
+
+        $query->execute();
+
+        return $query->fetch();
+    }
+
     function createList($data) {
         $conn = dbcon();
 
@@ -67,6 +78,20 @@
         $query = $conn->prepare("UPDATE lists SET name = :listName WHERE id = :id");
         $query->bindParam(":id", $id);
         $query->bindParam(":listName", $data["listName"]);
+
+        $query->execute();
+    }
+
+    function updateTask($id, $data) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("UPDATE tasks SET name = :taskName, description = :description, duration = :duration, list_id = :list_id, status_id = :status_id WHERE id = :id");
+        $query->bindParam(":id", $id);
+        $query->bindParam(":taskName", $data["taskName"]);
+        $query->bindParam(":description", $data["description"]);
+        $query->bindParam(":duration", $data["duration"]);
+        $query->bindParam(":list_id", $data["list"]);
+        $query->bindParam(":status_id", $data["status"]);
 
         $query->execute();
     }
