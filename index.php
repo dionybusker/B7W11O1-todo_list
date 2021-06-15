@@ -19,56 +19,58 @@
     </head>
     <body>
         <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
-        <a href="createTask.php" class="btn btn-info">Nieuwe taak</a>
+        <!-- <a href="createTask.php" class="btn btn-info">Nieuwe taak</a> -->
         
         <div class="row col-12">
-            <?php foreach ($lists as $list) { ?>
 
-            <div class="card col-3 m-1">
+
+            <?php foreach ($lists as $list) { ?>
+            <div class="card col-4 m-0 p-0">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $list["name"] ?></h4>
-                    <a href="updateList.php?id=<?php echo $list["id"] ?>"><i class="fas fa-info-circle"></i></a>
 
-                    <p class="card-text">
-                        <?php
-                            foreach ($tasks as $task) {
-                                if ($task["list_id"] == $list["id"]) {
-                        ?>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p class="card-text">
-                                                <span class="font-weight-bold">Taak: </span>
-                                                <?php echo $task["name"]; ?> <br>
-
-                                                <span class="font-weight-bold">Beschrijving: </span>
-                                                <?php echo $task["description"] ?> <br>
-
-                                                <span class="font-weight-bold">Tijdsduur: </span>
-                                                <?php echo $task["duration"] ?> minuten <br>
-
-                                                <span class="font-weight-bold">Status: </span>
-                                                <?php foreach ($statuses as $status) {
-                                                    if ($task["status_id"] == $status["id"]) {
-                                                        echo $status["name"];
-                                                    }
-                                                } ?> <br>
-
-                                                <a href="" class="text-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                            </p>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                        <?php
-                                }
-                            }
-                            ?>
-                    </p>
+                    <div class="card-text">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Description</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    foreach ($tasks as $task) { 
+                                        if ($task["list_id"] == $list["id"]) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $task["id"] ?></td>
+                                    <td><?php echo $task["name"] ?></td>
+                                    <td><?php echo $task["description"] ?></td>
+                                    <td><?php echo $task["duration"] ?></td>
+                                    <td>
+                                        <?php
+                                            foreach ($statuses as $status) {
+                                                if ($task["status_id"] == $status["id"]) {
+                                                    echo $status["name"];
+                                                }
+                                            }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
             <?php } ?>
+
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
