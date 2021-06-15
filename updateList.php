@@ -15,14 +15,10 @@
 <!-- require header -->
 <?php require_once("includes/header.php") ?>
 
-
-        <?php echo $list["name"] ?>
-
-        
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>?id=<?php echo $id ?>" method="POST">
 
             <div class="form-group">
-                <label class="col=1" for="listName">Naam aanpassen</label>
+                <label class="col-1" for="listName">Naam aanpassen</label>
                 <input class="col-2" type="text" name="listName" value="<?php echo $list["name"] ?>">
             </div>
 
