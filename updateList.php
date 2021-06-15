@@ -1,10 +1,15 @@
 <?php
     require_once("includes/functions.php");
 
+    $id = $_GET["id"];
+    $list = getListById($id);
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        createList($_POST);
+        updateList($id, $_POST);
+
         header("Location: index.php");
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -13,14 +18,22 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/8eccf2802e.js" crossorigin="anonymous"></script>
         <title>Document</title>
     </head>
     <body>
+
+        <?php echo $list["name"] ?>
+
         
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-            <label for="listName">Lijst naam: </label>
-            <input type="text" name="listName">
+        <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
+
+            <div class="form-group">
+                <label class="col=1" for="listName">Naam aanpassen</label>
+                <input class="col-2" type="text" value="<?php echo $list["name"] ?>">
+            </div>
+
+            <input type="text" value="<?php echo $list["id"] ?>" hidden>
 
             <input type="submit" class="btn btn-info">
         </form>

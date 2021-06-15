@@ -1,13 +1,16 @@
 <?php
     require_once("includes/functions.php");
-
+    $lists = getAllLists();
+    $statuses = getAllStatuses();
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $taskName = $_POST["taskName"];
-        $description = $_POST["description"];
-        $duration = $_POST["duration"];
+        // $taskName = $_POST["taskName"];
+        // $description = $_POST["description"];
+        // $duration = $_POST["duration"];
+        // $list = $_POST["lists"];
         
-        createTask($taskName, $description, $duration);
+        
+        createTask($_POST);
         header("Location: index.php");
     }
 ?>
@@ -23,15 +26,39 @@
     </head>
     <body>
         
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-            <label for="taskName">Taak naam: </label>
-            <input type="text" name="taskName"> <br>
+        <form class="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+            <div class="form-group">
+                <label class="col-1" for="taskName">Taak naam: </label>
+                <input class="col-2" type="text" name="taskName"> <br>
+            </div>
 
-            <label for="description">Beschrijving: </label>
-            <input type="text" name="description"> <br>
+            <div class="form-group">
+                <label class="col-1" for="description">Beschrijving: </label>
+                <input class="col-2" type="text" name="description"> <br>
+            </div>
 
-            <label for="duration">Tijdsduur: </label>
-            <input type="text" name="duration"> <br>
+            <div class="form-group">
+                <label class="col-1" for="duration">Tijdsduur: </label>
+                <input class="col-2" type="text" name="duration"> <br>
+            </div>
+
+            <div class="form-group">
+                <label class="col-1" for="list">Selecteer lijst</label>
+                <select class="col-2" name="list" id="list">
+                    <?php foreach ($lists as $list) { ?>
+                        <option value="<?php echo $list["id"] ?>"><?php echo $list["name"] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="col-1" for="status">Selecteer status</label>
+                <select class="col-2" name="status" id="status">
+                    <?php foreach ($statuses as $status) { ?>
+                        <option value="<?php echo $status["id"] ?>"><?php echo $status["name"] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
 
             <input type="submit" class="btn btn-info">
         </form>

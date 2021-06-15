@@ -19,12 +19,16 @@
     </head>
     <body>
         <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
+        <a href="createTask.php" class="btn btn-info">Nieuwe taak</a>
+        
         <div class="row col-12">
             <?php foreach ($lists as $list) { ?>
 
             <div class="card col-3 m-1">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $list["name"] ?></h4>
+                    <a href="updateList.php?id=<?php echo $list["id"] ?>"><i class="fas fa-info-circle"></i></a>
+
                     <p class="card-text">
                         <?php
                             foreach ($tasks as $task) {
@@ -61,9 +65,6 @@
                             }
                             ?>
                     </p>
-
-                    <a href="createTask.php" class="btn btn-info">Nieuwe taak</a>
-
                 </div>
             </div>
 

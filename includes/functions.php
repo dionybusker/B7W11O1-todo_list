@@ -29,20 +29,44 @@
         return $query->fetchAll();
     }
 
-    function createList($listName) {
+    function getListById($id) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("SELECT * FROM lists WHERE id = :id");
+        $query->bindParam(":id", $id);
+
+        $query->execute();
+
+        return $query->fetch();
+    }
+
+    function createList($data) {
         $conn = dbcon();
 
         $query = $conn->prepare("INSERT INTO lists (name) VALUES (:listName)");
-        $query->bindParam(":listName", $listName);
+        $query->bindParam(":listName", $data["listName"]);
         $query->execute();
     }
 
-    function createTask($taskName, $description, $duration) {
+    function createTask($data) {
         $conn = dbcon();
 
-        $query = $conn->prepare("INSERT INTO tasks (name, description, duration) VALUES (:taskName, :description, :duration)");
-        $query->bindParam(":taskName", $taskName);
-        $query->bindParam(":description", $description);
-        $query->bindParam(":duration", $duration);
+        $query = $conn->prepare("INSERT INTO tasks (name, description, duration, list_id, status_id) VALUES (:taskName, :description, :duration, :list_id, :status_id)");
+        $query->bindParam(":taskName", $data["taskName"]);
+        $query->bindParam(":description", $data["description"]);
+        $query->bindParam(":duration", $data["duration"]);
+        $query->bindParam(":list_id", $data["list"]);
+        $query->bindParam(":status_id", $data["status"]);
+
+        $query->execute();
+    }
+
+    function updateList($id, $data) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("UPDATE lists SET name = :listName WHERE id = :id");
+        $query->bindParam(":id", $id);
+        $query->bindParam(":listName", $data["listName"]);
+
         $query->execute();
     }
