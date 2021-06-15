@@ -67,7 +67,7 @@
                             <div class="mx-auto">
                                 <a href="createTask.php?id=<?php echo $list["id"] ?>" class="btn btn-info">Taak toevoegen</a>
                                 <a href="updateList.php?id=<?php echo $list["id"] ?>" class="btn btn-warning">Lijst updaten</a>
-                                <a href="" class="btn btn-danger">Lijst verwijderen</a>
+                                <a href="deleteList.php?id=<?php echo $list["id"] ?>" class="btn btn-danger">Lijst verwijderen</a>
                             </div>
                         </div>
                     </div>
