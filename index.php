@@ -54,7 +54,7 @@
                                         ?>
                                     </td>
                                     <td class="px-0"><a href="updateTask.php?id=<?php echo $task["id"] ?>" class="text-primary"><i class="fas fa-edit"></i></a></td>
-                                    <td class="px-0"><a href="" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                    <td class="px-0"><a href="deleteTask.php?id=<?php echo $task["id"] ?>" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                                 <?php
                                         }

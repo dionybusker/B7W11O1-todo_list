@@ -95,3 +95,12 @@
 
         $query->execute();
     }
+
+    function deleteTask($id) {
+        $conn = dbcon();
+
+        $query = $conn->prepare("DELETE FROM tasks WHERE id = :id");
+        $query->bindParam(":id", $id);
+
+        $query->execute();
+    }
