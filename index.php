@@ -7,17 +7,8 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/8eccf2802e.js" crossorigin="anonymous"></script>
-        <title>Document</title>
-    </head>
-    <body>
+<?php require_once("includes/header.php") ?>
+
         <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
         <!-- <a href="createTask.php" class="btn btn-info">Nieuwe taak</a> -->
         
@@ -31,13 +22,15 @@
 
                     <div class="card-text">
                         <table class="table">
-                            <thead>
+                            <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>Task</th>
-                                    <th>Description</th>
-                                    <th>Duration</th>
+                                    <th>Taak</th>
+                                    <th>Beschrijving</th>
+                                    <th>Tijdsduur</th>
                                     <th>Status</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +42,7 @@
                                     <td><?php echo $task["id"] ?></td>
                                     <td><?php echo $task["name"] ?></td>
                                     <td><?php echo $task["description"] ?></td>
-                                    <td><?php echo $task["duration"] ?></td>
+                                    <td><?php echo $task["duration"] ?> minuten</td>
                                     <td>
                                         <?php
                                             foreach ($statuses as $status) {
@@ -59,6 +52,8 @@
                                             }
                                         ?>
                                     </td>
+                                    <td class="px-0"><a href="" class="text-primary"><i class="fas fa-edit"></i></a></td>
+                                    <td class="px-0"><a href="" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                                 <?php
                                         }
@@ -66,6 +61,14 @@
                                 ?>
                             </tbody>
                         </table>
+
+                        <div class="row col-12">
+                            <div class="mx-auto">
+                                <a href="createTask.php?id=<?php echo $list["id"] ?>" class="btn btn-info">Taak toevoegen</a>
+                                <a href="" class="btn btn-warning">Lijst updaten</a>
+                                <a href="" class="btn btn-danger">Lijst verwijderen</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,9 +76,4 @@
 
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
-    </body>
-</html>
+<?php require_once("includes/footer.php") ?>
