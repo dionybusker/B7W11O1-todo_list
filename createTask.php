@@ -17,6 +17,7 @@
     }
 ?>
 
+<!-- require header -->
 <?php require_once("includes/header.php") ?>
 
 
@@ -60,4 +61,5 @@
             <input type="submit" class="btn btn-info">
         </form>
 
+<!-- require footer -->
 <?php require_once("includes/footer.php") ?>

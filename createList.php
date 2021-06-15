@@ -7,6 +7,7 @@
     }
 ?>
 
+<!-- require header -->
 <?php require_once("includes/header.php") ?>
 
         
@@ -18,4 +19,5 @@
         </form>
 
 
+<!-- require footer -->
 <?php require_once("includes/footer.php") ?>
