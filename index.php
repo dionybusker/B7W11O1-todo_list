@@ -7,6 +7,7 @@
 
 ?>
 
+<!-- require header -->
 <?php require_once("includes/header.php") ?>
 
         <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
@@ -65,7 +66,7 @@
                         <div class="row col-12">
                             <div class="mx-auto">
                                 <a href="createTask.php?id=<?php echo $list["id"] ?>" class="btn btn-info">Taak toevoegen</a>
-                                <a href="" class="btn btn-warning">Lijst updaten</a>
+                                <a href="updateList.php?id=<?php echo $list["id"] ?>" class="btn btn-warning">Lijst updaten</a>
                                 <a href="" class="btn btn-danger">Lijst verwijderen</a>
                             </div>
                         </div>
@@ -76,4 +77,5 @@
 
         </div>
         
+<!-- require footer -->
 <?php require_once("includes/footer.php") ?>
