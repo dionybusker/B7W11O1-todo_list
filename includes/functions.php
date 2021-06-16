@@ -107,13 +107,9 @@
 
     function deleteList($id) {
         $conn = dbcon();
-
-        $query = $conn->prepare("DELETE FROM lists WHERE id = :id");
-        $query = $conn->prepare("DELETE FROM tasks WHERE list_id = :id");
+        
+        $query = $conn->prepare("DELETE FROM lists WHERE id = :id; DELETE FROM tasks WHERE list_id = :id");
         $query->bindParam(":id", $id);
 
         $query->execute();
-
-        // een lijst kan alleen verwijderd worden wanneer er taken in zitten
-        // een lege lijst kan dus nog niet verwijderd worden
     }
