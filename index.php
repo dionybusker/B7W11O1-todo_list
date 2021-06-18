@@ -1,9 +1,23 @@
 <?php
     require_once("includes/functions.php");
 
+    // if (isset($_GET["order"])) {
+    //     $tasks = getAllTasks($_GET["order"]);
+
+    // }
+    
     $lists = getAllLists();
     $tasks = getAllTasks();
     $statuses = getAllStatuses();
+
+    $order = isset($_GET["order"]) && strtolower($_GET["order"]) == "desc" ? "DESC" : "ASC";
+
+    $orderSort = $order == "ASC" ? "desc" : "asc";
+
+    if (isset($_GET["order"])) {
+
+        $tasks = orderTasks($_GET["order"]);
+    }
 
 ?>
 
@@ -28,7 +42,7 @@
                                     <th>#</th>
                                     <th>Taak</th>
                                     <th>Beschrijving</th>
-                                    <th>Tijdsduur</th>
+                                    <th class="pr-0">Tijdsduur<a href="index.php?order=<?php echo $orderSort ?>"><i class="fas fa-sort"></i></a></th>
                                     <th>Status</th>
                                     <th></th>
                                     <th></th>

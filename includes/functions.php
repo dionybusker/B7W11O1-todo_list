@@ -18,6 +18,18 @@
         $query->execute();
 
         return $query->fetchAll();
+
+        // if ($order == "asc") {
+        //     $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration ASC");
+        //     $query->execute();
+    
+        //     return $query->fetchAll();
+        // } elseif ($order == "desc") {
+        //     $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration DESC");
+        //     $query->execute();
+    
+        //     return $query->fetchAll();
+        // }
     }
 
     function getAllStatuses() {
@@ -112,4 +124,21 @@
         $query->bindParam(":id", $id);
 
         $query->execute();
+    }
+
+    function orderTasks($order) {
+        $conn = dbcon();
+
+        if ($order == "asc") {
+            $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration ASC");
+            $query->execute();
+    
+            return $query->fetchAll();
+        } elseif ($order == "desc") {
+            $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration DESC");
+            $query->execute();
+    
+            return $query->fetchAll();
+        }
+
     }
