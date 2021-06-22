@@ -25,6 +25,8 @@
                 $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '3'");
             } elseif ($_POST["status"] == "4") {
                 $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '4'");
+            } elseif ($_POST["status"] == "0") {
+                $query = $conn->prepare("SELECT * FROM tasks");
             }
         } else {
             $query = $conn->prepare("SELECT * FROM tasks");

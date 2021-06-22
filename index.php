@@ -35,6 +35,7 @@
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
             <label for="status">Filteren op: </label>
             <select name="status" id="status">
+                <option value="0">Alles</option>
                 <?php foreach ($statuses as $status) { ?>
                     <option value="<?php echo $status["id"] ?>"><?php echo $status["name"] ?></option>
                 <?php } ?>
