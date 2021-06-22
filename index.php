@@ -19,6 +19,10 @@
         $tasks = orderTasks($_GET["order"]);
     }
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $tasks = getAllTasks($_POST);
+    }
+
 ?>
 
 <!-- require header -->
@@ -26,6 +30,18 @@
 
         <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
         <!-- <a href="createTask.php" class="btn btn-info">Nieuwe taak</a> -->
+
+
+        <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
+            <label for="status">Filteren op: </label>
+            <select name="status" id="status">
+                <?php foreach ($statuses as $status) { ?>
+                    <option value="<?php echo $status["id"] ?>"><?php echo $status["name"] ?></option>
+                <?php } ?>
+            </select>
+
+            <input type="submit" class="btn btn-info">
+        </form>
         
         <div class="row col-12">
 

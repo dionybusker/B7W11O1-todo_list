@@ -14,10 +14,26 @@
     function getAllTasks() {
         $conn = dbcon();
 
-        $query = $conn->prepare("SELECT * FROM tasks");
+        // var_dump($filter);
+
+        if (isset($_POST["status"])) {
+            if ($_POST["status"] == "1") {
+                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '1'");
+            } elseif ($_POST["status"] == "2") {
+                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '2'");
+            } elseif ($_POST["status"] == "3") {
+                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '3'");
+            } elseif ($_POST["status"] == "4") {
+                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '4'");
+            }
+        } else {
+            $query = $conn->prepare("SELECT * FROM tasks");
+        }
+
         $query->execute();
 
         return $query->fetchAll();
+
 
         // if ($order == "asc") {
         //     $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration ASC");
