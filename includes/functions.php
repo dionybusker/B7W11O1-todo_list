@@ -14,18 +14,11 @@
     function getAllTasks() {
         $conn = dbcon();
 
-        // var_dump($filter);
-
         if (isset($_POST["status"])) {
-            if ($_POST["status"] == "1") {
-                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '1'");
-            } elseif ($_POST["status"] == "2") {
-                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '2'");
-            } elseif ($_POST["status"] == "3") {
-                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '3'");
-            } elseif ($_POST["status"] == "4") {
-                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = '4'");
-            } elseif ($_POST["status"] == "0") {
+            if ($_POST["status"] != "") {
+                $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = :filter");
+                $query->bindParam(":filter", $_POST["status"]);
+            } else {
                 $query = $conn->prepare("SELECT * FROM tasks");
             }
         } else {
@@ -35,19 +28,6 @@
         $query->execute();
 
         return $query->fetchAll();
-
-
-        // if ($order == "asc") {
-        //     $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration ASC");
-        //     $query->execute();
-    
-        //     return $query->fetchAll();
-        // } elseif ($order == "desc") {
-        //     $query = $conn->prepare("SELECT * FROM tasks ORDER BY duration DESC");
-        //     $query->execute();
-    
-        //     return $query->fetchAll();
-        // }
     }
 
     function getAllStatuses() {
