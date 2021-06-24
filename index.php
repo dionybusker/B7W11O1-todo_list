@@ -24,21 +24,27 @@
         $tasks = getAllTasks($_POST);
     }
 
+    // $getStatus = $_GET["status"];
+
 ?>
 
 <!-- require header -->
 <?php require_once("includes/header.php") ?>
 
         <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
+
+        <a href="index.php" class="btn btn-warning float-right"><i class="fas fa-sync-alt"></i></a>
+
         <!-- <a href="createTask.php" class="btn btn-info">Nieuwe taak</a> -->
 
-
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
-            <label for="status">Filteren op: </label>
+            <label for="status">Filteren op status: </label>
             <select name="status" id="status">
                 <option value="">Geen filter</option>
                 <?php foreach ($statuses as $status) { ?>
-                    <option value="<?php echo $status["id"] ?>"><?php echo $status["name"] ?></option>
+                    <option value="<?php echo $status["id"] ?>" <?php if (isset($_POST["status"]) && $_POST["status"] == $status["id"]) { echo "selected"; } ?>>
+                        <?php echo $status["name"] ?>
+                    </option>
                 <?php } ?>
             </select>
 
@@ -60,7 +66,17 @@
                                     <th>#</th>
                                     <th>Taak</th>
                                     <th>Beschrijving</th>
-                                    <th class="pr-0">Tijdsduur<a href="index.php?order=<?php echo $orderSort ?>"><i class="fas fa-sort"></i></a></th>
+                                    <th class="pr-0">
+                                        Duur
+                                        <a href="index.php?order=<?php echo $orderSort ?>">
+                                            
+                                            <?php if (isset($orderSort) && $orderSort == "asc") { ?>
+                                                <i class="fas fa-sort-up"></i>
+                                            <?php } elseif (isset($orderSort) && $orderSort == "desc") { ?>
+                                                <i class="fas fa-sort-down"></i>
+                                            <?php } ?>
+                                        </a>
+                                    </th>
                                     <th>Status</th>
                                     <th></th>
                                     <th></th>
