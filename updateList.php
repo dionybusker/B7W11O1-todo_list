@@ -8,12 +8,14 @@
         updateList($id, $_POST);
 
         header("Location: index.php");
+        exit;
     }
 
 ?>
 
 <!-- require header -->
 <?php require_once("includes/header.php") ?>
+        <a href="index.php" class="btn btn-dark">Ga terug</a>
 
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>?id=<?php echo $id ?>" method="POST">
 
