@@ -6,12 +6,6 @@
     $id = $_GET["id"];
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // $taskName = $_POST["taskName"];
-        // $description = $_POST["description"];
-        // $duration = $_POST["duration"];
-        // $list = $_POST["lists"];
-        
-        
         createTask($_POST);
         header("Location: index.php");
         exit;

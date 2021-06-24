@@ -1,12 +1,6 @@
 <?php
     require_once("includes/functions.php");
 
-    // if (isset($_GET["order"])) {
-    //     $tasks = getAllTasks($_GET["order"]);
-
-    // }
-    
-
     $lists = getAllLists();
     $tasks = getAllTasks();
     $statuses = getAllStatuses();
@@ -23,9 +17,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $tasks = getAllTasks($_POST);
     }
-
-    // $getStatus = $_GET["status"];
-
 ?>
 
 <!-- require header -->
