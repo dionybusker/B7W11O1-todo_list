@@ -58,7 +58,7 @@
                 </select>
             </div>
 
-            <input type="submit" class="btn btn-info">
+            <input type="submit" class="btn btn-info" value="Taak toevoegen">
         </form>
 
 <!-- require footer -->

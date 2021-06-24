@@ -61,7 +61,7 @@
 
             <input type="text" value="<?php echo $id ?>" hidden>
 
-            <input type="submit" class="btn btn-info">
+            <input type="submit" class="btn btn-info" value="Taak updaten">
         </form>
 
 <!-- require footer -->

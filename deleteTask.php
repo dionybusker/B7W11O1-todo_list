@@ -16,14 +16,14 @@
 <!-- require header -->
 <?php require_once("includes/header.php") ?>
 
-        <h4>Weet je zeker dat je "<?php echo $task["name"] ?>" wilt verwijderen?</h4>
+        <h4>Weet je zeker dat je de taak "<?php echo $task["name"] ?>" wilt verwijderen?</h4>
 
         <a href="index.php" class="btn btn-dark">Annuleren</a>
 
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>?id=<?php echo $id ?>" method="POST">
             <input type="text" value="<?php echo $id ?>" hidden>
 
-            <input type="submit" class="btn btn-danger" value="Verwijderen">
+            <input type="submit" class="btn btn-danger" value="Taak verwijderen">
         </form>
 
 

@@ -31,11 +31,10 @@
 <!-- require header -->
 <?php require_once("includes/header.php") ?>
 
-        <a href="createList.php" class="btn btn-info">Nieuwe lijst</a>
+        <a href="createList.php" class="btn btn-info">Nieuwe lijst maken</a>
 
         <a href="index.php" class="btn btn-warning float-right"><i class="fas fa-sync-alt"></i></a>
 
-        <!-- <a href="createTask.php" class="btn btn-info">Nieuwe taak</a> -->
 
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
             <label for="status">Filteren op status: </label>
@@ -48,7 +47,7 @@
                 <?php } ?>
             </select>
 
-            <input type="submit" class="btn btn-info">
+            <input type="submit" class="btn btn-info" value="Filteren">
         </form>
         
         <div class="row col-12">
@@ -101,7 +100,7 @@
                                             }
                                         ?>
                                     </td>
-                                    <td class="px-0"><a href="updateTask.php?id=<?php echo $task["id"] ?>" class="text-primary"><i class="fas fa-edit"></i></a></td>
+                                    <td class="px-0"><a href="updateTask.php?id=<?php echo $task["id"] ?>" class="text-warning"><i class="fas fa-edit"></i></a></td>
                                     <td class="px-0"><a href="deleteTask.php?id=<?php echo $task["id"] ?>" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                                 <?php

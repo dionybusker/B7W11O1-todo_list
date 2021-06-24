@@ -26,7 +26,7 @@
 
             <input type="text" value="<?php echo $id ?>" hidden>
 
-            <input type="submit" class="btn btn-info">
+            <input type="submit" class="btn btn-info" value="Lijst updaten">
         </form>
 
 <!-- require footer -->

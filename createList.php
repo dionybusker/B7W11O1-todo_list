@@ -17,7 +17,7 @@
             <label for="listName">Lijst naam: </label>
             <input type="text" name="listName">
 
-            <input type="submit" class="btn btn-info">
+            <input type="submit" class="btn btn-info" value="Lijst toevoegen">
         </form>
 
 
