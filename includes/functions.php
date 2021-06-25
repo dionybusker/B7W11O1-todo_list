@@ -2,6 +2,11 @@
 
     require_once("dbcon.php");
 
+    /**
+     * Fetch all lists from the database
+     * 
+     * @return array lists entries from database
+     */
     function getAllLists() {
         $conn = dbcon();
 
@@ -11,6 +16,13 @@
         return $query->fetchAll();
     }
 
+    /**
+     * Fetch all tasks from the database
+     * 
+     * Dependent on the filter if there is one
+     * 
+     * @return array tasks entries from database
+     */
     function getAllTasks() {
         $conn = dbcon();
 
@@ -30,6 +42,11 @@
         return $query->fetchAll();
     }
 
+    /**
+     * Get all statuses from the database
+     * 
+     * @return array statuses entries from database
+     */
     function getAllStatuses() {
         $conn = dbcon();
 
@@ -39,6 +56,12 @@
         return $query->fetchAll();
     }
 
+    /**
+     * Get a specific list based on id
+     * 
+     * @param int $id - get id from url
+     * @return array list data
+     */
     function getListById($id) {
         $conn = dbcon();
 
@@ -50,6 +73,12 @@
         return $query->fetch();
     }
 
+    /**
+     * Get a specific task based on id
+     * 
+     * @param int $id - get id from url
+     * @return array task data
+     */
     function getTaskById($id) {
         $conn = dbcon();
 
@@ -61,6 +90,11 @@
         return $query->fetch();
     }
 
+    /**
+     * Create a new list and add this data to the database
+     * 
+     * @param array $data - get data from POST
+     */
     function createList($data) {
         $conn = dbcon();
 
@@ -69,6 +103,11 @@
         $query->execute();
     }
 
+    /**
+     * Create a new task and add this data to the database
+     * 
+     * @param array $id - get data from POST
+     */
     function createTask($data) {
         $conn = dbcon();
 
@@ -82,6 +121,11 @@
         $query->execute();
     }
 
+    /**
+     * Update a list based on id and update the correct data in the database
+     * 
+     * @param array $id - get id and data from POST
+     */
     function updateList($id, $data) {
         $conn = dbcon();
 
@@ -92,6 +136,12 @@
         $query->execute();
     }
 
+    /**
+     * Update a task based on id and update the correct data in the database
+     * 
+     * @param int $id - get id from POST
+     * @param array $data - get data from POST
+     */
     function updateTask($id, $data) {
         $conn = dbcon();
 
@@ -106,6 +156,11 @@
         $query->execute();
     }
 
+    /**
+     * Delete a task based on which id has been given
+     * 
+     * @param int $id - get id from POST
+     */
     function deleteTask($id) {
         $conn = dbcon();
 
@@ -115,6 +170,13 @@
         $query->execute();
     }
 
+    /**
+     * Delete a list based on which id has been given
+     * 
+     * If a list has one or more tasks, these tasks will automatically be deleted as well
+     * 
+     * @param int $id - get id from POST
+     */
     function deleteList($id) {
         $conn = dbcon();
         
@@ -124,6 +186,12 @@
         $query->execute();
     }
 
+    /**
+     * Order tasks based on what order has been given as parameter
+     * 
+     * @param array $order - asc or desc
+     * @return array ordered tasks data entries
+     */
     function orderTasks($order) {
         $conn = dbcon();
 
