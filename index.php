@@ -39,7 +39,7 @@
                 <?php } ?>
             </select>
 
-            <input type="submit" class="btn btn-dark" value="Filteren">
+            <input type="submit" class="btn btn-info" value="Filteren">
         </form>
         
         <div class="row col-12">
