@@ -5,6 +5,7 @@
 
     $list = getListById($id);
 
+    // function call deleteList when submitted, then go back to index.php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         deleteList($id);
 

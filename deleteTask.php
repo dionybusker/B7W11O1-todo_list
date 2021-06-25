@@ -5,6 +5,7 @@
 
     $task = getTaskById($id);
 
+    // function call deleteTask when submitted, then go back to index.php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         deleteTask($id);
 

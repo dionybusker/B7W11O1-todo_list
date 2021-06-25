@@ -1,19 +1,21 @@
 <?php
     require_once("includes/functions.php");
 
+    // function calls
     $lists = getAllLists();
     $tasks = getAllTasks();
     $statuses = getAllStatuses();
 
+    // get order from url and change to asc or desc
     $order = isset($_GET["order"]) && strtolower($_GET["order"]) == "desc" ? "DESC" : "ASC";
-
     $orderSort = $order == "ASC" ? "desc" : "asc";
 
+    // function call orderTasks if order has been set
     if (isset($_GET["order"])) {
-
         $tasks = orderTasks($_GET["order"]);
     }
 
+    // function call getAllTasks when submitted (this is for the filter on statuses)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $tasks = getAllTasks($_POST);
     }
@@ -25,7 +27,6 @@
         <a href="createList.php" class="btn btn-info">Nieuwe lijst maken</a>
 
         <a href="index.php" class="btn btn-warning float-right"><i class="fas fa-sync-alt"></i></a>
-
 
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
             <label for="status">Filteren op status: </label>
@@ -60,9 +61,9 @@
                                         Duur
                                         <a href="index.php?order=<?php echo $orderSort ?>">
                                             
-                                            <?php if (isset($orderSort) && $orderSort == "asc") { ?>
+                                            <?php if ($orderSort == "asc") { ?>
                                                 <i class="fas fa-sort-up"></i>
-                                            <?php } elseif (isset($orderSort) && $orderSort == "desc") { ?>
+                                            <?php } elseif ($orderSort == "desc") { ?>
                                                 <i class="fas fa-sort-down"></i>
                                             <?php } ?>
                                         </a>

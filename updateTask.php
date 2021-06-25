@@ -7,6 +7,7 @@
     $lists = getAllLists();
     $statuses = getAllStatuses();
 
+    // function call updateTask when submitted, then go back to index.php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         updateTask($id, $_POST);
 

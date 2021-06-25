@@ -5,6 +5,7 @@
 
     $id = $_GET["id"];
     
+    // function call createTask when submitted, then go back to index.php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         createTask($_POST);
         header("Location: index.php");

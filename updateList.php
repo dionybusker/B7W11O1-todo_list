@@ -4,6 +4,7 @@
     $id = $_GET["id"];
     $list = getListById($id);
 
+    // function call updateList when submitted, then go back to index.php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         updateList($id, $_POST);
 
