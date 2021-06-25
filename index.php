@@ -17,7 +17,7 @@
 
     // function call getAllTasks when submitted (this is for the filter on statuses)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $tasks = getAllTasks($_POST);
+        $tasks = getAllTasks($_POST["status"]);
     }
 ?>
 

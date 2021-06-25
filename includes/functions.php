@@ -23,13 +23,13 @@
      * 
      * @return array tasks entries from database
      */
-    function getAllTasks() {
+    function getAllTasks($status = "") {
         $conn = dbcon();
 
-        if (isset($_POST["status"])) {
-            if ($_POST["status"] != "") {
+        if (isset($status)) {
+            if ($status != "") {
                 $query = $conn->prepare("SELECT * FROM tasks WHERE status_id = :filter");
-                $query->bindParam(":filter", $_POST["status"]);
+                $query->bindParam(":filter", $status);
             } else {
                 $query = $conn->prepare("SELECT * FROM tasks");
             }
