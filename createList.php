@@ -13,12 +13,11 @@
 <?php require_once("includes/header.php") ?>
         <a href="index.php" class="btn btn-dark">Ga terug</a>
 
-        
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
             <label for="listName">Lijst naam: </label>
             <input type="text" name="listName">
 
-            <input type="submit" class="btn btn-info" value="Lijst toevoegen">
+            <input type="submit" class="btn btn-success" value="Lijst toevoegen">
         </form>
 
 

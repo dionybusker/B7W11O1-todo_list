@@ -24,9 +24,9 @@
 <!-- require header -->
 <?php require_once("includes/header.php") ?>
 
-        <a href="createList.php" class="btn btn-info">Nieuwe lijst maken</a>
+        <a href="createList.php" class="btn btn-success">Nieuwe lijst maken</a>
 
-        <a href="index.php" class="btn btn-warning float-right"><i class="fas fa-sync-alt"></i></a>
+        <a href="index.php" class="btn btn-info float-right"><i class="fas fa-sync-alt"></i></a>
 
         <form class="form" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
             <label for="status">Filteren op status: </label>
@@ -39,7 +39,7 @@
                 <?php } ?>
             </select>
 
-            <input type="submit" class="btn btn-info" value="Filteren">
+            <input type="submit" class="btn btn-dark" value="Filteren">
         </form>
         
         <div class="row col-12">
@@ -60,7 +60,6 @@
                                     <th class="pr-0">
                                         Duur
                                         <a href="index.php?order=<?php echo $orderSort ?>">
-                                            
                                             <?php if ($orderSort == "asc") { ?>
                                                 <i class="fas fa-sort-up"></i>
                                             <?php } elseif ($orderSort == "desc") { ?>
@@ -92,7 +91,7 @@
                                             }
                                         ?>
                                     </td>
-                                    <td class="px-0"><a href="updateTask.php?id=<?php echo $task["id"] ?>" class="text-warning"><i class="fas fa-edit"></i></a></td>
+                                    <td class="px-0"><a href="updateTask.php?id=<?php echo $task["id"] ?>" class="text-info"><i class="fas fa-edit"></i></a></td>
                                     <td class="px-0"><a href="deleteTask.php?id=<?php echo $task["id"] ?>" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                                 <?php
@@ -104,8 +103,8 @@
 
                         <div class="row col-12">
                             <div class="mx-auto">
-                                <a href="createTask.php?id=<?php echo $list["id"] ?>" class="btn btn-info">Taak toevoegen</a>
-                                <a href="updateList.php?id=<?php echo $list["id"] ?>" class="btn btn-warning">Lijst updaten</a>
+                                <a href="createTask.php?id=<?php echo $list["id"] ?>" class="btn btn-success">Taak toevoegen</a>
+                                <a href="updateList.php?id=<?php echo $list["id"] ?>" class="btn btn-info">Lijst updaten</a>
                                 <a href="deleteList.php?id=<?php echo $list["id"] ?>" class="btn btn-danger">Lijst verwijderen</a>
                             </div>
                         </div>
